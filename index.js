@@ -66,10 +66,10 @@ function determineWinner(userInput, computerChoice) {
 
 // Log to calls functions for choice selection
 function playGame() {
-  const userChoice = getUserChoice("paper");
+  const userChoice = getUserChoice("rock");
   const computerChoice = getComputerChoice();
-  console.log(userChoice);
-  console.log(computerChoice);
+  console.log("User's Choice:", userChoice);
+  console.log("Computer's Choice:", computerChoice);
   console.log(determineWinner(userChoice, computerChoice));
 }
 
