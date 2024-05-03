@@ -17,7 +17,7 @@
     const paper = document.getElementById("paper")
     paper.addEventListener("click", () => {
       sessionStorage.setItem("userChoice", "paper") // Store user choice in local storage
-      return 
+      return
     })
   }
 
@@ -29,17 +29,9 @@
     })
   }
 
-  // Obtain user choice from local storage
-  const getUserChoice = () => {
-    let userChoice = sessionStorage.getItem("userChoice")
-    console.log("User selected: ", userChoice);
-    return  userChoice
-  }
-
-  
 
   // Function to capture computer choice
-  const ComputerChoice = () => {
+  const ComputerSelection = () => {
     let options
     const randNum = Math.floor(Math.random() * 3)
     switch (randNum) {
@@ -59,37 +51,20 @@
     sessionStorage.setItem("computerChoice", options)
   }
   // Call the ComputerChoice function to store the computer's choice
-  ComputerChoice()
-
-  // Obtain user choice from local storage
-  const getComputerChoice = () => {
-    let computerChoice = sessionStorage.getItem("computerChoice")
-    console.log("Computer selected: ", computerChoice);
-    return  computerChoice
-  }
-
-
-
-// Function to remove computer and user choice session storage
-const clearSessionStorage = () => {
-  sessionStorage.removeItem("userChoice")
-  sessionStorage.removeItem("computerChoice")
-}
-
-const userChoice = getUserChoice()
-console.log("UserChoiceFunction: ", userChoice)
-const computerChoice = getComputerChoice()
+  ComputerSelection();
 
   // Function to determine the winner of the game
-  // The function will take in two parameters, the user choice and the computer choice
-  const determineWinner = (userChoice, computerChoice) => {
+  const determineWinner = () => {
+
+    // Obtain the user and computer choice from session storage
+    const computerChoice = sessionStorage.getItem("computerChoice");
+    const userChoice = sessionStorage.getItem("userChoice");
+
     // Condition to determine a tie between the user and computer
     if (userChoice === computerChoice) {
       document.getElementById(
         "winnerStatus"
       ).innerHTML = `<p>It's a tie! Both the user and computer selected ${userChoice}</p>`;
-      clearSessionStorage.
-      return
     }
 
     // Conditions to determine the winner when there's no tie
@@ -99,26 +74,36 @@ const computerChoice = getComputerChoice()
       (userChoice === "scissors" && computerChoice === "paper")
     ) {
       userScore++
+      sessionStorage.setItem("userScore", userScore) // Store user score in local storage
       document.getElementById(
         "winnerStatus"
-      ).innerHTML = `<p>You win! ${userChoice} beats ${computerChoice}</p>`
+      ).innerHTML = `<p>You win! ${userChoice} beats ${computerChoice}</p>`;
     } else {
       computerScore++
       document.getElementById(
         "winnerStatus"
-      ).innerHTML = `<p>Computer wins! ${getComputerChoice()} beats ${getUserChoice()}</p>`
+      ).innerHTML = `<p>Computer wins! ${computerChoice} beats ${userChoice}</p>`;
+      sessionStorage.setItem("computerScore", computerScore); // Store computer score in local storage
     }
 
     // Update win count
     document.getElementById(
       "winCount"
-    ).innerHTML = `<p>User: ${userScore} | Computer: ${computerScore}</p>`
+    ).innerHTML = `<p>User: ${userScore} | Computer: ${computerScore}</p>`;
 }
   
-// Function to reset the game
-const resetGame = () => {
-  clearSessionStorage()
-  console.log("Game has been reset")
-}
+  // Function to remove computer and user choice and streak from session storage
+  const clearSessionStorage = () => {
+    sessionStorage.removeItem("userChoice")
+    sessionStorage.removeItem("computerChoice")
+    sessionStorage.removeItem("userScore")
+    sessionStorage.removeItem("computerScore")
+  }
+
+  // Function to reset the game
+  const resetGame = () => {
+    clearSessionStorage()
+    console.log("Game has been reset")
+  }
 
   // determineWinner(userChoice, computerChoice)
