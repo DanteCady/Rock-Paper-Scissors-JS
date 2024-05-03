@@ -106,4 +106,3 @@
     console.log("Game has been reset")
   }
 
-  // determineWinner(userChoice, computerChoice)
