@@ -17,7 +17,7 @@
     const paper = document.getElementById("paper")
     paper.addEventListener("click", () => {
       sessionStorage.setItem("userChoice", "paper") // Store user choice in local storage
-      return
+      return 
     })
   }
 
@@ -33,7 +33,7 @@
   const getUserChoice = () => {
     let userChoice = sessionStorage.getItem("userChoice")
     console.log("User selected: ", userChoice);
-    return 
+    return  userChoice
   }
 
   
@@ -65,7 +65,7 @@
   const getComputerChoice = () => {
     let computerChoice = sessionStorage.getItem("computerChoice")
     console.log("Computer selected: ", computerChoice);
-    return 
+    return  computerChoice
   }
 
 
@@ -77,6 +77,7 @@ const clearSessionStorage = () => {
 }
 
 const userChoice = getUserChoice()
+console.log("UserChoiceFunction: ", userChoice)
 const computerChoice = getComputerChoice()
 
   // Function to determine the winner of the game
