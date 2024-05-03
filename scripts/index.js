@@ -1,77 +1,109 @@
-console.log("hi");
+  // Global Variables
 
-// Function used to capture user input and convert it to lowercase
-const getUserChoice = (userInput) => {
-  userInput = userInput.toLowerCase();
-  // Identify if user provided rock, paper, or scissors
-  if (
-    userInput === "rock" ||
-    userInput === "paper" ||
-    userInput === "scissors"
-  ) {
-    return userInput;
-    // Error if provided input is not accepted
-  } else {
-    console.log("ERROR: Please input either rock, paper, or scissors.");
-  }
-};
+  // Variables to store the user and computer scores
+  let userScore = 0
+  let computerScore = 0
 
-function getComputerChoice() {
-  let options;
-  const randNum = Math.floor(Math.random() * 3);
-  switch (randNum) {
-    case 0:
-      options = "rock";
-      break;
-    case 1:
-      options = "paper";
-      break;
-    case 2:
-      options = "scissors";
-      break;
-    default:
-      console.log("ERROR: Please input either rock, paper, or scissors.");
-      break;
+  // Functions to capture user choice based on selected button
+  const selectRock = () => {
+    const rock = document.getElementById("rock")
+    rock.addEventListener("click", () => {
+      console.log("User selected rock")
+      sessionStorage.setItem("userChoice", "rock") // Store user choice in local storage
+      return
+    })
   }
-  return options;
-}
 
-// Condition to determine the choices of the two choices played
-function determineWinner(userInput, computerChoice) {
-  // Condition to determine a tie between the user and computer
-  if (userInput === computerChoice) {
-    return "It is a tie";
+  const selectPaper = () => {
+    const paper = document.getElementById("paper")
+    paper.addEventListener("click", () => {
+      console.log("User selected paper")
+      sessionStorage.setItem("userChoice", "paper") // Store user choice in local storage
+      return
+    })
   }
-  // Condition to determine a winner between the user and computer
-  if (userInput === "rock") {
-    if (computerChoice === "paper") {
-      return "Sorry computer, the user has won this round.";
-    } else {
-      return "The computer has lost this round.";
+
+  const selectScissor = () => {
+    const scissor = document.getElementById("scissors")
+    scissor.addEventListener("click", () => {
+      console.log("User selected scissor")
+      sessionStorage.setItem("userChoice", "scissors") // Store user choice in local storage
+      return
+    })
+  }
+
+  // Obtain user choice from local storage
+  const getUserChoice = () => {
+    let userSelection = sessionStorage.getItem("userChoice")
+    console.log("User selected: ", userSelection)
+    return userSelection
+  }
+
+  // Function to capture computer choice
+  const ComputerChoice = () => {
+    let options
+    const randNum = Math.floor(Math.random() * 3)
+    switch (randNum) {
+      case 0:
+        options = "rock"
+        break
+      case 1:
+        options = "paper"
+        break
+      case 2:
+        options = "scissors"
+        break
+      default:
+        console.log("ERROR: Please input either rock, paper, or scissors.")
+        break
     }
-  } else if (userInput === "paper") {
-    if (computerChoice === "scissors") {
-      return "Computer has won this round.";
-    } else {
-      return "The computer has lost this round.";
-    }
-  } else if (userInput === "scissors") {
-    if (computerChoice === "rock") {
-      return "The computer has won this round.";
-    } else {
-      return "The computer has lost this round.";
-    }
+    sessionStorage.setItem("computerChoice", options)
   }
-}
 
-// Log to calls functions for choice selection
-function playGame() {
-  const userChoice = getUserChoice("rock");
-  const computerChoice = getComputerChoice();
-  console.log("User's Choice:", userChoice);
-  console.log("Computer's Choice:", computerChoice);
-  console.log(determineWinner(userChoice, computerChoice));
-}
+  // Obtain user choice from local storage
+  const getComputerChoice = () => {
+    let computerSelection = sessionStorage.getItem("computerChoice")
+    console.log("Computer selected: ", computerSelection)
+    return computerSelection
+  }
 
-//Initate game
-playGame();
+  // Call the ComputerChoice function to store the computer's choice
+  ComputerChoice()
+
+  // Function to determine the winner of the game
+  // The function will take in two parameters, the user choice and the computer choice
+  const determineWinner = (userChoice, computerChoice) => {
+    // Condition to determine a tie between the user and computer
+    if (userChoice === computerChoice) {
+      document.getElementById(
+        "winnerStatus"
+      ).innerHTML = `<p>It's a tie! Both the user and computer selected ${userChoice}</p>`
+      return
+    }
+
+    // Conditions to determine the winner when there's no tie
+    if (
+      (userChoice === "rock" && computerChoice === "scissors") ||
+      (userChoice === "paper" && computerChoice === "rock") ||
+      (userChoice === "scissors" && computerChoice === "paper")
+    ) {
+      userScore++
+      document.getElementById(
+        "winnerStatus"
+      ).innerHTML = `<p>You win! ${userChoice} beats ${computerChoice}</p>`
+    } else {
+      computerScore++
+      document.getElementById(
+        "winnerStatus"
+      ).innerHTML = `<p>Computer wins! ${computerChoice} beats ${userChoice}</p>`
+    }
+
+    // Update win count
+    document.getElementById(
+      "winCount"
+    ).innerHTML = `<p>User: ${userScore} | Computer: ${computerScore}</p>`
+  }
+
+  const userChoice = getUserChoice()
+  const computerChoice = getComputerChoice()
+  // determineWinner(userChoice, computerChoice)

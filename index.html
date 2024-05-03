@@ -9,8 +9,10 @@
     <!-- Heading -->
     <h1>Play Rock, Paper, Scissors!</h1>
     
-    <p>Instructions:</p>
-    <p>Select your option below using the buttons and see if you can be the computer!</p>
+    <p class="instruction" id="instructionHeader">Instructions:</p>
+    <p class="instruction">Select a button below to start the game. The computer will</p>
+    <p class="instruction">randomly pick an option resulting in a win or a tie.</p>
+    <p class="instruction">Good luck!</p>
     <br>
     <br>
     <!-- Counter to track Win/Loss -->
@@ -20,17 +22,24 @@
     <h2>Select Your Option Below:</h2>
     
     <!-- User Selection Container -->
-    <div>
-        <button title="rockButton">
-            <img id="rock" alt="rock_image" src="/assets/icons8-rock-60.png"/>
+    <div id="userSelectionCont">
+        <button id="rock" type="button" title="rockButton" onclick="selectRock()">
+            <img  alt="rock_image" src="/assets/icons8-rock-60.png"/>
         </button>
-        <button title="paperButton">
-            <img id="paper" alt="paper_image" src="/assets/icons8-paper-60.png"/>
+        <button id="paper" type="button" title="paperButton" onclick="selectPaper()">
+            <img  alt="paper_image" src="/assets/icons8-paper-60.png"/>
         </button>
-        <button title="scissorButton">
-            <img id="scissor" alt="scissor_image" src="/assets/icons8-scissor-60.png"/>
+        <button id="scissors" type="button" title="scissorButton" onclick="selectScissor()">
+            <img  alt="scissor_image" src="/assets/icons8-scissor-60.png"/>
         </button>
     </div>
-
+    <br>
+    <hr>
+    <h2>Results:</h2>
+    <!-- Status Update For Winner -->
+    <p>Press the submit button to see who won!</p>
+    <input type="button" value="Submit">
+    <div id="winnerStatus"></div>
 </body>
+<script src="./scripts/index.js"></script>
 </html>
