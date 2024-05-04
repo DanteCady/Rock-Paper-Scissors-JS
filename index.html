@@ -4,16 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Play RPS!</title>
+    <link rel="stylesheet" href="./styles/styles.css">
 </head>
 <body class="container">
     <!-- Heading -->
-    <h1>Play Rock Paper Scissors!</h1>
+    <h1 class="header">Play Rock Paper Scissors!</h1>
     
-    <p class="instruction" id="instructionHeader">Instructions:</p>
+    <p class="instruction instructionHeader" >Instructions:</p>
     <p class="instruction">Select a button below to start the game. The computer will</p>
     <p class="instruction">randomly pick an option resulting in a win or a tie.</p>
-    <p class="instruction">Select the submit button after selecting a button.</p>
-    <p class="instruction">If you would like to restart the game and reset the score, press the reset button.</p>
+    <p class="instruction">Select the <span id="instructionSubmit">submit button</span> after selecting a button.</p>
+    <p class="instruction">If you would like to <span id="instructionReset">reset</span> the game and reset the score, press the reset button.</p>
     <p class="instruction">Good luck!</p>
     <br>
     <br>
@@ -25,13 +26,13 @@
     
     <!-- User Selection Container -->
     <div id="userSelectionCont">
-        <button id="rock" type="button" title="rockButton" onclick="selectRock()">
+        <button class="selectionButton" id="rock" type="button" title="rockButton" onclick="selectRock()">
             <img  alt="rock_image" src="/assets/icons8-rock-60.png"/>
         </button>
-        <button id="paper" type="button" title="paperButton" onclick="selectPaper()">
+        <button class="selectionButton" id="paper" type="button" title="paperButton" onclick="selectPaper()">
             <img  alt="paper_image" src="/assets/icons8-paper-60.png"/>
         </button>
-        <button id="scissors" type="button" title="scissorButton" onclick="selectScissor()">
+        <button class="selectionButton" id="scissors" type="button" title="scissorButton" onclick="selectScissor()">
             <img  alt="scissor_image" src="/assets/icons8-scissor-60.png"/>
         </button>
     </div>
@@ -40,8 +41,10 @@
     <h2>Results:</h2>
     <!-- Status Update For Winner -->
     <p>Press the submit button to see who won!</p>
-    <input type="button" value="Submit" onclick="determineWinner()">
-    <input type="button" value="Reset" onclick="resetGame()">
+    <div class="actionButtonCont">
+        <input class="actionButton" id="submitButton" value="Submit" onclick="determineWinner()">
+        <input class="actionButton" id="resetButton" value="Reset" onclick="resetGame()">
+    </div>
     <div id="winnerStatus"></div>
 </body>
 <script src="./scripts/index.js"></script>

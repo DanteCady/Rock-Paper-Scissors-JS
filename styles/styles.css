@@ -1,0 +1,73 @@
+/* Class: Styles */ 
+
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+.instructionHeader {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+.instruction {
+    font-size: 1rem;
+    margin-bottom: 5px;
+}
+.selectionButton {
+    border-radius: 30px;
+    justify-content: space-between;
+    margin: 10px;
+}
+.actionButtonCont{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.actionButton {
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+/* ID: styles */
+
+#submitButton {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 100%;
+}
+#resetButton{
+    background-color: #f44336;
+    color: white;
+    padding: 10px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 100%;
+}
+#instructionSubmit{
+    font-weight: bold;
+    color: #4CAF50;
+}
+#instructionReset {
+    font-weight: bold;
+    color: #f44336;
+}
+#winnerStatus {
+    font-size: 1.1rem;
+    font-weight: bold;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
