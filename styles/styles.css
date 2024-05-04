@@ -46,6 +46,7 @@
     border-radius: 4px;
     cursor: pointer;
     width: 100%;
+    text-align: center;
 }
 #resetButton{
     background-color: #f44336;
@@ -56,6 +57,7 @@
     border-radius: 4px;
     cursor: pointer;
     width: 100%;
+    text-align: center;
 }
 #instructionSubmit{
     font-weight: bold;
