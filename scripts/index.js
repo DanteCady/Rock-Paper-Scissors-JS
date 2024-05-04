@@ -65,33 +65,29 @@
       document.getElementById(
         "winnerStatus"
       ).innerHTML = `<p>It's a tie! Both the user and computer selected ${userChoice}</p>`;
-    }
-
-    // Conditions to determine the winner when there's no tie
-    if (
+    } else if (
       (userChoice === "rock" && computerChoice === "scissors") ||
       (userChoice === "paper" && computerChoice === "rock") ||
       (userChoice === "scissors" && computerChoice === "paper")
     ) {
-      userScore++
-      sessionStorage.setItem("userScore", userScore) // Store user score in local storage
+      userScore++;
+      sessionStorage.setItem("userScore", userScore); // Store user score in local storage
       document.getElementById(
         "winnerStatus"
       ).innerHTML = `<p>You win! ${userChoice} beats ${computerChoice}</p>`;
     } else {
-      computerScore++
+      computerScore++;
       document.getElementById(
         "winnerStatus"
       ).innerHTML = `<p>Computer wins! ${computerChoice} beats ${userChoice}</p>`;
       sessionStorage.setItem("computerScore", computerScore); // Store computer score in local storage
     }
-
     // Update win count
     document.getElementById(
       "winCount"
     ).innerHTML = `<p>User: ${userScore} | Computer: ${computerScore}</p>`;
-}
-  
+  }
+
   // Function to remove computer and user choice and streak from session storage
   const clearSessionStorage = () => {
     sessionStorage.removeItem("userChoice")
@@ -105,4 +101,3 @@
     clearSessionStorage()
     console.log("Game has been reset")
   }
-
