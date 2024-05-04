@@ -32,23 +32,10 @@
 
   // Function to capture computer choice
   const ComputerSelection = () => {
-    let options
-    const randNum = Math.floor(Math.random() * 3)
-    switch (randNum) {
-      case 0:
-        options = "rock"
-        break
-      case 1:
-        options = "paper"
-        break
-      case 2:
-        options = "scissors"
-        break
-      default:
-        console.log("ERROR: Please input either rock, paper, or scissors.")
-        break
-    }
-    sessionStorage.setItem("computerChoice", options)
+    const options = ["rock", "paper", "scissors"]
+    const randNum = Math.floor(Math.random() * options.length)
+    const selectedOption = options[randNum]
+    sessionStorage.setItem("computerChoice", selectedOption)
   }
   // Call the ComputerChoice function to store the computer's choice
   ComputerSelection()
@@ -64,7 +51,7 @@
     if (userChoice === computerChoice) {
       document.getElementById(
         "winnerStatus"
-      ).innerHTML = `<p>It's a tie! Both the user and computer selected ${userChoice}</p>`
+      ).innerHTML = `<p style="color: green">It's a tie! Both the user and computer selected ${userChoice}</p>`
     } else if (
       (userChoice === "rock" && computerChoice === "scissors") ||
       (userChoice === "paper" && computerChoice === "rock") ||
@@ -74,12 +61,12 @@
       sessionStorage.setItem("userScore", userScore) // Store user score in local storage
       document.getElementById(
         "winnerStatus"
-      ).innerHTML = `<p>You win! ${userChoice} beats ${computerChoice}</p>`
+      ).innerHTML = `<p style="color: green">You win! ${userChoice} beats ${computerChoice}</p>`;
     } else {
       computerScore++
       document.getElementById(
         "winnerStatus"
-      ).innerHTML = `<p>Computer wins! ${computerChoice} beats ${userChoice}</p>`
+      ).innerHTML = `<p style="color: green">Computer wins! ${computerChoice} beats ${userChoice}</p>`;
       sessionStorage.setItem("computerScore", computerScore) // Store computer score in local storage
     }
     // Update win count
