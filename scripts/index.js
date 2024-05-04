@@ -51,41 +51,41 @@
     sessionStorage.setItem("computerChoice", options)
   }
   // Call the ComputerChoice function to store the computer's choice
-  ComputerSelection();
+  ComputerSelection()
 
   // Function to determine the winner of the game
   const determineWinner = () => {
 
     // Obtain the user and computer choice from session storage
-    const computerChoice = sessionStorage.getItem("computerChoice");
-    const userChoice = sessionStorage.getItem("userChoice");
+    const computerChoice = sessionStorage.getItem("computerChoice")
+    const userChoice = sessionStorage.getItem("userChoice")
 
     // Condition to determine a tie between the user and computer
     if (userChoice === computerChoice) {
       document.getElementById(
         "winnerStatus"
-      ).innerHTML = `<p>It's a tie! Both the user and computer selected ${userChoice}</p>`;
+      ).innerHTML = `<p>It's a tie! Both the user and computer selected ${userChoice}</p>`
     } else if (
       (userChoice === "rock" && computerChoice === "scissors") ||
       (userChoice === "paper" && computerChoice === "rock") ||
       (userChoice === "scissors" && computerChoice === "paper")
     ) {
-      userScore++;
-      sessionStorage.setItem("userScore", userScore); // Store user score in local storage
+      userScore++
+      sessionStorage.setItem("userScore", userScore) // Store user score in local storage
       document.getElementById(
         "winnerStatus"
-      ).innerHTML = `<p>You win! ${userChoice} beats ${computerChoice}</p>`;
+      ).innerHTML = `<p>You win! ${userChoice} beats ${computerChoice}</p>`
     } else {
-      computerScore++;
+      computerScore++
       document.getElementById(
         "winnerStatus"
-      ).innerHTML = `<p>Computer wins! ${computerChoice} beats ${userChoice}</p>`;
-      sessionStorage.setItem("computerScore", computerScore); // Store computer score in local storage
+      ).innerHTML = `<p>Computer wins! ${computerChoice} beats ${userChoice}</p>`
+      sessionStorage.setItem("computerScore", computerScore) // Store computer score in local storage
     }
     // Update win count
     document.getElementById(
       "winCount"
-    ).innerHTML = `<p>User: ${userScore} | Computer: ${computerScore}</p>`;
+    ).innerHTML = `<p>User: ${userScore} | Computer: ${computerScore}</p>`
   }
 
   // Function to remove computer and user choice and streak from session storage
@@ -100,4 +100,5 @@
   const resetGame = () => {
     clearSessionStorage()
     console.log("Game has been reset")
+    ComputerSelection() // Call computer choice function to store the computer's choice after reset
   }
