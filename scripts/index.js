@@ -88,4 +88,5 @@
     clearSessionStorage()
     console.log("Game has been reset")
     ComputerSelection() // Call computer choice function to store the computer's choice after reset
+    window.location.reload() // Reload the page to fully reset game and computer choice
   }
