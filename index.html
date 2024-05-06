@@ -11,7 +11,7 @@
     <h1 class="header">Play Rock Paper Scissors!</h1>
     
     <p class="instruction instructionHeader" >Instructions:</p>
-    <p class="instruction">Double click a button below to start the game. The computer will</p>
+    <p class="instruction">Click a button below to start the game. The computer will</p>
     <p class="instruction">randomly pick an option resulting in a win or a tie.</p>
     <p class="instruction">Select the <span id="instructionSubmit">submit button</span> after selecting a button.</p>
     <p class="instruction">If you would like to <span id="instructionReset">reset</span> the game and reset the score, press the reset button.</p>
@@ -26,14 +26,14 @@
     
     <!-- User Selection Container -->
     <div id="userSelectionCont">
-        <button class="selectionButton" id="rock" type="button" title="rockButton" onclick="selectRock()">
-            <img  alt="rock_image" src="/assets/icons8-rock-60.png"/>
+        <button class="selectionButton" id="rock" type="button" title="rockButton" >
+            <img  onclick="selectRock()" alt="rock_image" src="/assets/icons8-rock-60.png"/>
         </button>
-        <button class="selectionButton" id="paper" type="button" title="paperButton" onclick="selectPaper()">
-            <img  alt="paper_image" src="/assets/icons8-paper-60.png"/>
+        <button class="selectionButton" id="paper" type="button" title="paperButton" >
+            <img  onclick="selectPaper()" alt="paper_image" src="/assets/icons8-paper-60.png"/>
         </button>
-        <button class="selectionButton" id="scissors" type="button" title="scissorButton" onclick="selectScissor()">
-            <img  alt="scissor_image" src="/assets/icons8-scissor-60.png"/>
+        <button class="selectionButton" id="scissors" type="button" title="scissorButton" >
+            <img onclick="selectScissor()" alt="scissor_image" src="/assets/icons8-scissor-60.png"/>
         </button>
     </div>
     <br>
